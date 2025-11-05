@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="$MUGA — Institutional defense network for Web3. Presale now open." />
+    <title>$MUGA | Institutional Defense Network</title>
+
+    <!-- Favicon -->
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>Shield</text></svg>">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap"
+        rel="stylesheet" />
+
+    <!-- Three.js -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.164.1/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.164.1/examples/js/controls/OrbitControls.js"></script>
+</head>
+
+<body>
+
+    <!-- 3D CANVAS -->
+    <div id="canvas-container"></div>
+
+    <!-- OVERLAY CONTENT -->
+    <div class="overlay">
+
+        <!-- HEADER -->
+        <header class="header">
+            <div class="container header__inner">
+                <a href="#" class="logo">
+                    <span class="logo__symbol">$</span>MUGA
+                </a>
+                <nav class="nav">
+                    <a href="#presale" class="nav__link">Presale</a>
+                    <a href="#alliance" class="nav__link">Alliance</a>
+                    <a href="#governance" class="nav__link">Governance</a>
+                    <a href="#docs" class="nav__link">Docs</a>
+                    <span class="badge badge--live">LIVE</span>
+                </nav>
+            </div>
+        </header>
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="container hero__content">
+                <h1 class="hero__title">
+                    <span class="glitch" data-text="DEFEND">DEFEND</span>
+                    <span class="glitch" data-text="THE">THE</span>
+                    <span class="glitch" data-text="REALM">REALM</span>
+                </h1>
+                <p class="hero__subtitle">
+                    $MUGA is the <strong>institutional-grade defense network</strong> uniting the most credible Web3
+                    founders
+                    to eliminate rug pulls, Ponzi schemes, and low-utility fraud.
+                </p>
+
+                <!-- PRESALE VAULT -->
+                <div class="presale-vault" id="presale">
+                    <div class="vault__header">
+                        <h2>Presale Vault</h2>
+                        <p class="text-sm text-muted">Early access to governance & utility</p>
+                    </div>
+
+                    <div class="vault__stats">
+                        <div class="stat">
+                            <div class="stat__value" id="raised">$0</div>
+                            <div class="stat__label">Raised</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat__value" id="contributors">0</div>
+                            <div class="stat__label">Contributors</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat__value" id="target">$10M</div>
+                            <div class="stat__label">Target</div>
+                        </div>
+                    </div>
+
+                    <div class="countdown" id="countdown">
+                        <div class="countdown__item"><span class="countdown__num">--</span><span
+                                class="countdown__label">D</span></div>
+                        <div class="countdown__item"><span class="countdown__num">--</span><span
+                                class="countdown__label">H</span></div>
+                        <div class="countdown__item"><span class="countdown__num">--</span><span
+                                class="countdown__label">M</span></div>
+                        <div class="countdown__item"><span class="countdown__num">--</span><span
+                                class="countdown__label">S</span></div>
+                    </div>
+
+                    <div class="address-box">
+                        <p class="text-xs"><strong>Send:</strong> 170 SUI or 2.2 SOL</p>
+                        <p class="address address--sui" id="suiAddress">0x...</p>
+                        <p class="address address--sol" id="solAddress">Sol...</p>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn btn--sui" onclick="connectSui()">Connect SUI</button>
+                        <button class="btn btn--sol" onclick="connectSolana()">Connect Phantom</button>
+                    </div>
+
+                    <p class="warning-text">Personal wallets only. Exchange deposits will be lost.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ALLIANCE -->
+        <section class="alliance" id="alliance">
+            <div class="container">
+                <h2 class="section-title">The Alliance</h2>
+                <div class="founder-grid">
+                    <div class="founder-card" data-tilt>
+                        <div class="founder-card__inner">
+                            <img src="muga1.png" alt="Alex Chen" />
+                            <div class="founder-card__body">
+                                <h3>Alex Chen</h3>
+                                <p class="role">ChainGuard • $45M TVL</p>
+                                <p class="bio">Zero exploits. 3 years. Former Binance Labs.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="founder-card" data-tilt>
+                        <div class="founder-card__inner">
+                            <img src="muga2.png" alt="Sarah Kim" />
+                            <div class="founder-card__body">
+                                <h3>Sarah Kim</h3>
+                                <p class="role">RealYield • $120M AUM</p>
+                                <p class="bio">MEV-resistant. 3 peer-reviewed papers.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="founder-card" data-tilt>
+                        <div class="founder-card__inner">
+                            <img src="muga3.png" alt="Marcus Reed" />
+                            <div class="founder-card__body">
+                                <h3>Marcus Reed</h3>
+                                <p class="role">DeFi Arsenal • 200K+ Users</p>
+                                <p class="bio">Wormhole core. Cross-chain security.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="container footer__inner">
+                <p>&copy; 2025 $MUGA. Institutional Defense Network.</p>
+                <div class="footer__links">
+                    <a href="#">Whitepaper</a>
+                    <a href="#">Audit</a>
+                    <a href="#">Contract</a>
+                    <a href="#">Contact</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JS -->
+    <script>
+        // CONFIG
+        const SUI_ADDRESS = "SUI: 0x9dfa9ae61c2468d4d93aed144d400622981470d466d00cbe336c6f082a27cb2a";
+        const SOL_ADDRESS = "SOL: CDTZTTBKYzdwjpYFwtHEUXJ6z7XvWTNpHbjfBwKQu7HK";
+        const PRESALE_END = new Date("2025-12-15T00:00:00Z").getTime();
+        const TARGET = 10000000;
+
+        // DOM
+        document.getElementById("suiAddress").textContent = SUI_ADDRESS;
+        document.getElementById("solAddress").textContent = SOL_ADDRESS;
+
+        // MOCK DATA
+        let raised = 0;
+        let contributors = 0;
+        const increment = () => {
+            if (raised < TARGET * 0.7) {
+                raised += Math.random() * 150000;
+                contributors += Math.floor(Math.random() * 3);
+                document.getElementById("raised").textContent = `$${(raised / 1e6).toFixed(2)}M`;
+                document.getElementById("contributors").textContent = Math.floor(contributors);
+            }
+        };
+        setInterval(increment, 3000);
+
+        // COUNTDOWN
+        function updateCountdown() {
+            const distance = PRESALE_END - Date.now();
+            if (distance < 0) {
+                document.getElementById("countdown").innerHTML = `<div class="ended">PRESALE ENDED</div>`;
+                return;
+            }
+            const d = Math.floor(distance / 86400000);
+            const h = Math.floor((distance % 86400000) / 3600000);
+            const m = Math.floor((distance % 3600000) / 60000);
+            const s = Math.floor((distance % 60000) / 1000);
+            const items = document.querySelectorAll(".countdown__num");
+            items[0].textContent = d; items[1].textContent = h; items[2].textContent = m; items[3].textContent = s;
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // WALLET
+        function connectSui() { alert(`Send 99.9 SUI → ${SUI_ADDRESS}`); }
+        function connectSolana() { alert(`Send 2.2 SOL → ${SOL_ADDRESS}`); }
+
+        // 3D SCENE
+        const container = document.getElementById('canvas-container');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        container.appendChild(renderer.domElement);
+
+        const geometry = new THREE.IcosahedronGeometry(1, 0);
+        const material = new THREE.MeshBasicMaterial({ color: 0xE11D48, wireframe: true });
+        const mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
+
+        const light = new THREE.PointLight(0xE11D48, 2, 100);
+        light.position.set(0, 0, 5);
+        scene.add(light);
+
+        camera.position.z = 5;
+
+        let mouseX = 0, mouseY = 0;
+        document.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+            mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+        });
+
+        function animate() {
+            requestAnimationFrame(animate);
+            mesh.rotation.x += 0.005;
+            mesh.rotation.y += 0.005;
+            mesh.rotation.x += mouseY * 0.05;
+            mesh.rotation.y += mouseX * 0.05;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+
+    <!-- 3D Tilt (Vanilla) -->
+    <script>
+        document.querySelectorAll('[data-tilt]').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1000px) rotateX(0) rotateY(0) scale(1)`;
+            });
+        });
+    </script>
+</body>
+
+</html>
